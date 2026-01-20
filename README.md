@@ -284,3 +284,52 @@ Azure Blob Storage linked service
 Azure SQL linked service
 
 Azure Databricks linked service
+
+# 1.6. Azure Key Vault
+Used to securely store sensitive information like passwords, API keys, and certificates.
+
+# Real Scenario:
+ADF pipelines use Key Vault to retrieve SQL credentials securely without exposing them.
+
+# 🔗 4. Integration with Azure Services
+# 4.1 Datasets & Linked Services
+Datasets reference data, while Linked Services define connections.
+
+# 4.2 Integration Runtime (IR)
+| Type                | Purpose                                                         |
+| ------------------- | --------------------------------------------------------------- |
+| **Azure IR**        | Used for cloud-to-cloud data movement                           |
+| **Self-Hosted IR**  | Used for on-premises to cloud data movement                     |
+| **Managed VNet IR** | Used for secure data movement in restricted or private networks |
+
+# 4.3 Triggers & Monitoring
+ADF supports Scheduling, Event-based triggers, and monitoring through the Azure portal with alerts.
+# Real Scenario:
+A file arriving in Blob Storage automatically triggers a pipeline using event triggers.
+
+#  Activities in Azure Data Factory (ADF)
+Activities in ADF define what action should be performed. There are three major types:
+
+Data Movement Activities
+
+Execution Control Activities
+
+Control Flow Activities
+# 1.1 Data Movement Activities
+Used to move data between supported sources and destinations using Copy Activity.
+
+# 1.1.1 Azure Blob Storage Source/Sink:
+Scenario	   Example
+Source	     Read CSV files from Blob Storage and copy to SQL Database
+Sink	       Store transformed files from SQL/Databricks back to Blob for storage layer
+# Example use case:
+
+Source: raw/customer_data.csv in Blob → Sink: Azure SQL dbo.Customers
+
+# 1.1.2 Azure SQL Database Source/Sink:
+Used when SQL Database is either the source or destination.
+
+# Real Example:
+
+Copy incremental sales data from SQL and store into ADLS Gen2 for reporting.
+
