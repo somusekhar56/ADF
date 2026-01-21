@@ -333,3 +333,53 @@ Used when SQL Database is either the source or destination.
 
 Copy incremental sales data from SQL and store into ADLS Gen2 for reporting.
 
+# 1.2 Execution Control Activities
+These help control the workflow logic and orchestration.
+# 1.2.1 Execute Pipeline Activity:
+Used to run a pipeline from another pipeline.
+Example:
+Master Pipeline → Executes pipeline to copy raw → Executes pipeline for validation → Executes data transformation.
+# 1.2.2 If Condition Activity:
+Executes logic based on true/false output.
+Real Scenario:
+If today's file exists → proceed with load, else send failure notification.
+# 1.2.3 ForEach Activity:
+Loops through a collection of items.
+# Example:
+Iterate through multiple folders/files: jan, feb, mar and load data.
+# 1.2.4 Web Activity:
+Calls REST API endpoint.
+# Use Case:
+Trigger Databricks job or external API before/after pipeline run.
+# 1.3 Control Flow Activities
+These activities control pipeline structure and behaviour.
+# 1.3.1 Wait Activity:
+Pauses execution for a given time.
+# Example: Wait 5 mins before retrying external API.
+# 1.3.2 Until Activity:
+Loops until a logical condition becomes true.
+# Example: Continue checking file arrival every 10 mins until file exists.
+# 1.3.3 Get Metadata Activity:
+Fetch metadata like file size, existence, folder count.
+# Real Case: Check if today's file exists in storage.
+# 1.3.4 Lookup Activity:
+Fetch single row from a data store.
+
+Example: Lookup valid file date or expected record count.
+# 1.3.5 Stored Procedure Activity:
+Runs stored procedure in SQL.
+# Use Case:
+After data load, execute stored procedure for cleansing or merge operation.
+# 1.4 Pipelines and Triggers
+Pipelines are containers of activities.
+
+Triggers schedule and execute pipelines.
+
+| **Trigger Type**    | **Use Case**                                                                                         |
+| ------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Schedule**        | Run pipelines on a fixed schedule, e.g., every day at 1 AM                                           |
+| **Tumbling Window** | Process data in fixed time slices, e.g., hourly or daily batch logs                                  |
+| **Event Trigger**   | Start pipeline automatically when a specific event occurs, e.g., a new file arrives in Azure Storage |
+
+
+
