@@ -381,5 +381,33 @@ Triggers schedule and execute pipelines.
 | **Tumbling Window** | Process data in fixed time slices, e.g., hourly or daily batch logs                                  |
 | **Event Trigger**   | Start pipeline automatically when a specific event occurs, e.g., a new file arrives in Azure Storage |
 
+# 2️⃣ Azure Databricks Notebooks
+# 2.1 Overview of Azure Databricks Notebook Integration
+ADF can call Databricks notebooks for processing and transformation.
+# Use Case: To perform ETL processing using PySpark.
+
+# 2.2 Notebook Orchestration
+# Triggered via:
+
+Databricks Notebook Activity
+
+REST Web Activity
+# Example:
+
+Copy → Validate → Databricks transform → Load curated layer.
+
+# 3️⃣ Azure DevOps CI/CD Integration
+# 3.1 Continuous Integration and Deployment
+# Used for:
+
+Version control of ADF JSON using Git
+
+Automated deployment to higher environments (Dev → QA → Prod)
+
+Example Flow:
+
+Developer commits changes → Pull Request → CI pipeline validates JSON → CD publishes ARM templates to prod
+
+
 
 
